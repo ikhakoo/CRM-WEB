@@ -12,11 +12,21 @@ get '/' do
 end
 
 get '/contacts' do
+	@crm_app_name = "Imran\'s CRM"
+  @crm_current_time = current_time.getlocal
   erb :contacts
 end
 
 get '/contacts/new' do
+	@crm_app_name = "Imran\'s CRM"
+  @crm_current_time = current_time.getlocal
   erb :new_contact
+end
+
+get '/contacts/delete' do
+	@crm_app_name = "Imran\'s CRM"
+  @crm_current_time = current_time.getlocal
+	erb :delete
 end
 
 post '/contacts' do
