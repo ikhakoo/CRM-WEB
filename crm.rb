@@ -3,9 +3,11 @@ require_relative 'rolodex'
 require 'sinatra'
 
 $rolodex= Rolodex.new
+current_time = Time.new
 
 get '/' do
   @crm_app_name = "Imran\'s CRM"
+  @crm_current_time = current_time.getlocal
   erb :index
 end
 
