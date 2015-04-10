@@ -3,7 +3,6 @@ require_relative 'rolodex'
 require 'sinatra'
 
 @@rolodex = Rolodex.new
-@@rolodex.add_contact(Contact.new("Johnny", "Bravo", "johnny@bitmakerlabs.com", "Rockstar"))
 $rolodex= Rolodex.new
 current_time = Time.new
 contact = @@rolodex.find(1000)
