@@ -1,9 +1,31 @@
-<h1>Create new Contact</h1>
-
-<form action="/contacts" method="post">
-  <strong>First Name:</strong> <input type="text" name="first_name">
-  <strong>Last Name:</strong> <input type="text" name="last_name">
-  <strong>Email:</strong> <input type="text" name="email">
-  <strong>Note:</strong> <input type="text" name="note">
-  <input type="submit" name="Submit">
+<h1>CREATE A NEW CONTACT</h1>
+<div class="page-header">
+  </div>
+    <div class="container nopadding">
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+        <label for="firstName" class="col-sm-2 control-label">First Name:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="first_name" placeholder="First Name"></input>
+        </div>
+    		</div>
+    		<div class="form-group">
+        <label for="lastName" class="col-sm-2 control-label">Last Name:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="last_name" placeholder="Last Name"></input>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email" class="col-sm-2 control-label">E-Mail:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="email" placeholder="E-Mail" maxlength="30"></input>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="notes" class="col-sm-2 control-label">Notes:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="note" placeholder="Notes" maxlength="30"></input>
+        </div>
+    </div>
 </form>
+</div>
