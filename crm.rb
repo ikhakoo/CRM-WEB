@@ -26,10 +26,14 @@ get '/contacts/new' do
   erb :new_contact
 end
 
-get '/contacts/delete' do
-  @crm_app_name = "Imran\'s CRM"
-  @crm_current_time = current_time.getlocal
-  erb :delete
+delete "/contacts/:id" do
+  @contact = @@rolodex.find(params[:id].to_i)
+  if @contact
+    @@rolodex.remove_contact(@contact)
+    redirect to("/contacts")
+  else
+    raise Sinatra::NotFound
+  end
 end
 
 post '/contacts' do
