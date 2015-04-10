@@ -4,10 +4,8 @@ require 'data_mapper'
 
 DataMapper.setup(:default, "sqlite3:database.sqlite3")
 
-@@rolodex = Rolodex.new
 $rolodex= Rolodex.new
 current_time = Time.new
-contact = @@rolodex.find(1000)
 
 class Contact
   include DataMapper::Resource
@@ -28,9 +26,8 @@ get '/' do
   erb :index
 end
 
-get '/contacts' do
-	@crm_app_name = "Imran\'s CRM"
-  @crm_current_time = current_time.getlocal
+get "/contacts" do
+  @contacts = Contact.all
   erb :contacts
 end
 
@@ -50,9 +47,13 @@ delete "/contacts/:id" do
   end
 end
 
-post '/contacts' do
-  new_contact = Contact.new(params[:first_name], params[:last_name], params[:email], params[:note])
-  $rolodex.add_contact(new_contact)
+post "/contacts" do
+  contact = Contact.create(
+    :first_name => params[:first_name],
+    :last_name => params[:last_name],
+    :email => params[:email],
+    :note => params[:note]
+  )
   redirect to('/contacts')
 end
 
