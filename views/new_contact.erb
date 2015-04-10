@@ -3,29 +3,29 @@
   <fieldset>
     <legend>Create a New Contact</legend>
     <div class="container nopadding">
-      <form class="form-horizontal" role="form">
+      <form class="form-horizontal" role="form" action="/contacts/new" method="POST">
         <div class="form-group">
         <label for="first_name" class="col-sm-2 control-label">First Name:</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="first_name" placeholder="First Name"></input>
+            <input type="text" class="form-control" id="first_name" placeholder="First Name" name="first_name"></input>
         </div>
     		</div>
     		<div class="form-group">
         <label for="last_name" class="col-sm-2 control-label">Last Name:</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="last_name" placeholder="Last Name"></input>
+            <input type="text" class="form-control" id="last_name" placeholder="Last Name" name="last_name"></input>
         </div>
     </div>
     <div class="form-group">
         <label for="email" class="col-sm-2 control-label">E-Mail:</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="email" placeholder="E-Mail" maxlength="30"></input>
+            <input type="text" class="form-control" id="email" placeholder="E-Mail" maxlength="30" name="email"></input>
         </div>
     </div>
     <div class="form-group">
         <label for="note" class="col-sm-2 control-label">Notes:</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="note" placeholder="Notes" maxlength="30"></input>
+            <input type="text" class="form-control" id="note" placeholder="Notes" maxlength="30" name="note"></input>
         </div>
     </div>
     <div class="form-group">

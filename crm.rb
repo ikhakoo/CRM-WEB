@@ -19,35 +19,23 @@ end
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
-
+#index
 get '/' do
-  @crm_app_name = "Imran\'s CRM"
-  @crm_current_time = current_time.getlocal
   erb :index
 end
-
+#contacts display all
 get "/contacts" do
   @contacts = Contact.all
+  puts @contacts.inspect
   erb :contacts
 end
-
+## new contacts
 get '/contacts/new' do
-  @crm_app_name = "Imran\'s CRM"
-  @crm_current_time = current_time.getlocal
   erb :new_contact
 end
 
-delete "/contacts/:id" do
-  @contact = @@rolodex.find(params[:id].to_i)
-  if @contact
-    @@rolodex.remove_contact(@contact)
-    redirect to("/contacts")
-  else
-    raise Sinatra::NotFound
-  end
-end
-
-post "/contacts" do
+post "/contacts/new" do
+  puts "i've posted these from the form: #{params.inspect}"
   contact = Contact.create(
     :first_name => params[:first_name],
     :last_name => params[:last_name],
@@ -58,7 +46,7 @@ post "/contacts" do
 end
 
 get "/contacts/:id" do
-  @contact = @@rolodex.find(params[:id].to_i)
+  @contact = Contact.get(params[:id].to_i)
   if @contact
     erb :show_contact
   else
@@ -67,11 +55,11 @@ get "/contacts/:id" do
 end
 
 put "/contacts/:id" do
-  @contact = @@rolodex.find(params[:id].to_i)
+  @contact = Contact.get(params[:id].to_i)
   if @contact
     @contact.first_name = params[:first_name]
     @contact.last_name = params[:last_name]
-    @contact.email = params[:email]
+    @contact.email = params[:email] 
     @contact.note = params[:note]
 
     redirect to("/contacts")
