@@ -2,8 +2,11 @@ require_relative 'contact'
 require_relative 'rolodex'
 require 'sinatra'
 
+@@rolodex = Rolodex.new
+@@rolodex.add_contact(Contact.new("Johnny", "Bravo", "johnny@bitmakerlabs.com", "Rockstar"))
 $rolodex= Rolodex.new
 current_time = Time.new
+contact = @@rolodex.find(1000)
 
 get '/' do
   @crm_app_name = "Imran\'s CRM"
@@ -15,6 +18,11 @@ get '/contacts' do
 	@crm_app_name = "Imran\'s CRM"
   @crm_current_time = current_time.getlocal
   erb :contacts
+end
+
+get "/contacts/1000" do
+  @contact = @@rolodex.find(1000)
+  erb :show_contact
 end
 
 get '/contacts/new' do
