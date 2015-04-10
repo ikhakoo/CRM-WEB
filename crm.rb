@@ -1,4 +1,3 @@
-require_relative 'contact'
 require_relative 'rolodex'
 require 'sinatra'
 require 'data_mapper'
@@ -9,6 +8,19 @@ DataMapper.setup(:default, "sqlite3:database.sqlite3")
 $rolodex= Rolodex.new
 current_time = Time.new
 contact = @@rolodex.find(1000)
+
+class Contact
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :first_name, String
+  property :last_name, String
+  property :email, String
+  property :note, String
+end
+
+DataMapper.finalize
+DataMapper.auto_upgrade!
 
 get '/' do
   @crm_app_name = "Imran\'s CRM"

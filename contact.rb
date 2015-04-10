@@ -8,11 +8,4 @@ class Contact # model
 		@email = email
 		@note = note
 	end
-
-	def to_s
-		 	print "First Name: #{@first_name} "
-			print "Last Name: #{@last_name} "
-			print "Email: #{@email} "
-			print "Notes: #{@note} "
-	end
 end
