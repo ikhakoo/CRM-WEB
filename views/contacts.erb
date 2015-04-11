@@ -3,9 +3,13 @@
   <ul>
   	<% @contacts.each do |contact| %>
     	<p>First Name:<%= contact.first_name %><br> 
-    			Last Name: <%= contact.last_name %><br>
-  		   	Email: <%= contact.email %><br>
-  			 	Notes: <%= contact.note %> </p>
+    		 Last Name: <%= contact.last_name %><br>
+  		   Telephone: <%= contact.phone_number %><br>
+  		   Email: <%= contact.email %><br>
+  		   Street Address: <%= contact.street_address %><br>
+  		   City: <%= contact.email %> Province\State: <%= contact.state %><br>
+  		   Country: <%= contact.country %><br>
+  			 Notes: <%= contact.note %> </p>
     		<a class="btn btn-default" href="/contacts/<%= contact.id %>/edit">Edit</a> 
     		<form action="/contacts/ <%= contact.id %>" method="post" id="delete-contact-form">
     		<input name="_method" type="hidden" value="delete" />
@@ -16,4 +20,5 @@
   	<% end %>
   </ul>
 </div>
+
 

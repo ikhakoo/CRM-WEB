@@ -1,11 +1,15 @@
-<p>
-		First Name:<%= contact.first_name %><br> 
-    Last Name: <%= contact.last_name %><br>
-   	Email: <%= contact.email %><br>
-	 	Notes: <%= contact.note %> 
-<p>
+<p>First Name:<%= contact.first_name %><br> 
+   Last Name: <%= contact.last_name %><br>
+   Telephone: <%= contact.phone_number %><br>
+   Email: <%= contact.email %><br>
+   Street Address: <%= contact.street_address %><br>
+   City: <%= contact.email %> Province\State: <%= contact.state %><br>
+   Country: <%= contact.country %><br>
+	 Notes: <%= contact.note %> 
+</p>
 
 <form action="/contacts/<%= @contact.id %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" name="Delete">
 </form>
+

@@ -9,9 +9,15 @@ class Contact
   property :id, Serial
   property :first_name, String
   property :last_name, String
+  property :phone_number, String
+  property :street_address, String
+  property :postal_code, String
+  property :city, String
+  property :state, String
+  property :country, String
   property :email, String
   property :note, String
-end
+end 
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
@@ -35,7 +41,13 @@ post "/contacts/new" do
   contact = Contact.create(
     :first_name => params[:first_name],
     :last_name => params[:last_name],
+    :phone_number => params[:phone_number],
     :email => params[:email],
+    :street_address => params[:street_address],
+    :postal_code => params[:postal_code],
+    :city => params[:city],
+    :state => params[:state],
+    :country => params[:country],
     :note => params[:note]
   )
   redirect to('/contacts')
@@ -55,8 +67,14 @@ put "/contacts/:id" do
   if @contact
     @contact.first_name = params[:first_name]
     @contact.last_name = params[:last_name]
+    @contact.phone_number = params[:phone_number]
     @contact.email = params[:email] 
     @contact.note = params[:note]
+    @contact.street_address = params[:street_address]
+    @contact.postal_code = params[:postal_code]
+    @contact.city = params[:city]
+    @contact.state = params[:state]
+    @contact.country = params[:country]
 
     redirect to("/contacts")
   else
@@ -79,8 +97,14 @@ post "/contacts/:id/edit" do
   contact = Contact.update(
       :first_name => params[:first_name],
       :last_name => params[:last_name],
+      :phone_number => params[:phone_number],
       :email => params[:email],
       :note => params[:note],
+      :street_address => params[:street_address],
+      :postal_code => params[:postal_code],
+      :city => params[:city],
+      :state => params[:state],
+      :country => params[:country]
       )
 end
 
