@@ -44,7 +44,7 @@ post "/contacts/new" do
   )
   redirect to('/contacts')
 end
-
+#show contact
 get "/contacts/:id" do
   @contact = Contact.get(params[:id].to_i)
   if @contact
@@ -67,7 +67,7 @@ put "/contacts/:id" do
     raise Sinatra::NotFound
   end
 end
-
+#edit contact
 get "/contacts/:id/edit" do
   @contact = Contact.get(params[:id].to_i)
   if @contact
@@ -77,6 +77,19 @@ get "/contacts/:id/edit" do
   end
 end
 
+post "/contacts/:id/edit" do
+  puts "i've posted these from the form: #{params.inspect}"
+  @contact = Contact.get(params[:id].to_i)
+    contact = Contact.update(
+      @contact.first_name = params[:first_name],
+      @contact.last_name = params[:last_name],
+      @contact.email = params[:email],
+      @contact.note = params[:note]
+      )
+    contact.save
+end
+
+#delete contact
 delete '/contacts/:id' do
   @contact = Contact.get(params[:id].to_i)
   if @contact
