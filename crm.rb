@@ -1,11 +1,7 @@
-require_relative 'rolodex'
 require 'sinatra'
 require 'data_mapper'
 
 DataMapper.setup(:default, "sqlite3:database.sqlite3")
-
-$rolodex= Rolodex.new
-current_time = Time.new
 
 class Contact
   include DataMapper::Resource
@@ -80,13 +76,12 @@ end
 post "/contacts/:id/edit" do
   puts "i've posted these from the form: #{params.inspect}"
   @contact = Contact.get(params[:id].to_i)
-    contact = Contact.update(
-      @contact.first_name = params[:first_name],
-      @contact.last_name = params[:last_name],
-      @contact.email = params[:email],
-      @contact.note = params[:note]
+  contact = Contact.update(
+      :first_name => params[:first_name],
+      :last_name => params[:last_name],
+      :email => params[:email],
+      :note => params[:note],
       )
-    contact.save
 end
 
 #delete contact
