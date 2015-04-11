@@ -1,7 +1,27 @@
 <h1>All Contacts</h1>
+<div class="well" id="contact-well">
+  <ul>
+  	<% @contacts.each do |contact| %>
+    	<p>First Name:<%= contact.first_name %><br> 
+    			Last Name: <%= contact.last_name %><br>
+  		   	Email: <%= contact.email %><br>
+  			 	Notes: <%= contact.note %> </p>
+  			 	<div id="main">
+    		<a class="btn btn-default" href="/contacts/<%= contact.id %>/edit">Edit</a> 
+    		<form action="/contacts/ <%= contact.id %>" method="post" id="delete-contact-form">
+    		<input name="_method" type="hidden" value="delete" />
+    		<input class="btn btn-default" type="submit" value="Delete"/><p>
+    		</div>
+    	</form>
+    	</ul>
+    	</li><hr>
+  	<% end %>
+  </ul>
+</div>
 
-<ul>
-  <% @contacts.each do |contact| %>
-    <li><a href="/contacts/<%= contact.id %>"><%= contact.first_name %> <%= contact.last_name %></a></li>
-  <% end %>
-</ul>
+<style type="text/css">
+    #main
+    {
+     display: inline;
+    }
+</style>

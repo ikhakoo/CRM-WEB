@@ -69,11 +69,21 @@ put "/contacts/:id" do
 end
 
 get "/contacts/:id/edit" do
-  @contact = @@rolodex.find(params[:id].to_i)
+  @contact = Contact.get(params[:id].to_i)
   if @contact
     erb :edit_contact
   else
     raise Sinatra::NotFound
+  end
+end
+
+delete '/contacts/:id' do
+  @contact = Contact.get(params[:id].to_i)
+  if @contact
+    @contact.destroy
+    redirect to '/contacts'
+  else
+    raise Sinatra:NotFound
   end
 end
 
