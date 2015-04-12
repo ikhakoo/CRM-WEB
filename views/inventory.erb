@@ -1,0 +1,21 @@
+<legend>myCRM Inventory</legend>
+<div class="well" id="contact-well">
+  <ul>
+  	<% @inventory.each do |inventory| %>
+    	<p>Brand: <%= inventory.item_brand %><br> 
+    		 Type: <%= inventory.item_type %><br>
+  		   Color: <%= inventory.item_color %><br>
+  		   Quantity: <%= inventory.item_quantity %><br>
+  		   Unit Cost: <%= inventory.item_cost %><br>
+  		   Sales Price: <%= inventory.item_sales_price %><br>
+  		   Notes: <%= inventory.item_note %> </p>
+    		<a class="btn btn-default" href="/inventory/<%= inventory.item_id %>/edit">Edit</a> 
+    		<form action="/inventory/ <%= inventory.item_id %>" method="post" id="delete-inventory-form">
+    		<input name="_method" type="hidden" value="delete" />
+    		<input class="btn btn-default" type="submit" value="Delete"/><p>
+    	</form>
+    	</ul>
+    	</li><hr>
+  	<% end %>
+  </ul>
+</div>
