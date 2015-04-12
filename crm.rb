@@ -197,7 +197,7 @@ end
 
 post "/inventory/:item_id/edit" do
   puts "i've posted these from the form: #{params.inspect}"
-  @inventory = Inventory.get(params[:id].to_i)
+  @inventory = Inventory.get(params[:item_id].to_i)
   inventory = Inventory.update(
     :item_brand => params[:item_brand],
     :item_type => params[:item_type],
