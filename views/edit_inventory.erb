@@ -1,0 +1,58 @@
+<div class="page-header">
+  </div>
+  <fieldset>
+    <legend>Modify Inventory</legend>
+    <div class="well" id="contact-well">
+      <form class="form-horizontal" role="form" action="/inventory/<%= @inventory.item_id %>" method="POST">
+      <input type="hidden" name="_method" value="put">
+        <div class="form-group">
+        <label for="item_brand" class="col-sm-2 control-label">Brand:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="item_brand" name="item_brand" value="<%= @inventory.item_brand %>"></input>
+        </div>
+            </div>
+            <div class="form-group">
+        <label for="item_type" class="col-sm-2 control-label">Type:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="item_type" name="item_type" value="<%= @inventory.item_type %>"></input>
+        </div>
+    </div>
+     <div class="form-group">
+        <label for="item_color" class="col-sm-2 control-label">Color:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="item_color" name="item_color" value="<%= @inventory.item_color %>"></input>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="item_quantity" class="col-sm-2 control-label">Quantity:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="item_quantity" maxlength="30" name="item_quantity" value="<%= @inventory.item_quantity %>"></input>
+        </div>
+    </div>
+     <div class="form-group">
+        <label for="item_cost" class="col-sm-2 control-label">Unit Cost ($):</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="item_cost" maxlength="30" name="item_cost" value="<%= @inventory.item_cost %>"></input>
+        </div>
+    </div>
+     <div class="form-group">
+        <label for="item_sales_price" class="col-sm-2 control-label">Sales Price ($):</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="item_sales_price" maxlength="30" name="item_sales_price" value="<%= @inventory.item_sales_price %>"></input>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="item_note" class="col-sm-2 control-label">Notes:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="state" maxlength="300" name="item_note" value="<%= @inventory.item_note %>"></input>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="submit" class="col-sm-2 control-label"></label>
+        <div class="col-sm-2">
+            <input type="submit" class="form-control" id="submit" placeholder="Submit" maxlength="30"></input>
+        </div>
+    </div>
+    </fieldset>
+</form>
+</div>
