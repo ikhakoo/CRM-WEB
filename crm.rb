@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'data_mapper'
+require 'pry'
 
 DataMapper.setup(:default, "sqlite3:database.sqlite3")
 
@@ -105,10 +106,10 @@ get "/contacts/:id/edit" do
   end
 end
 
-post "/contacts/:id/edit" do
+put "/contacts/:id/edit" do
   puts "i've posted these from the form: #{params.inspect}"
   @contact = Contact.get(params[:id].to_i)
-  contact = Contact.update(
+  contact = @contact.update(
       :first_name => params[:first_name],
       :last_name => params[:last_name],
       :phone_number => params[:phone_number],
@@ -120,6 +121,9 @@ post "/contacts/:id/edit" do
       :state => params[:state],
       :country => params[:country]
       )
+      @contact.save
+
+      redirect to("/contacts")
 end
 
 #delete contact
@@ -170,7 +174,7 @@ get "/inventory/:item_id" do
 end
 
 put "/inventory/:item_id" do
-  @inventory = Inventory.get(params[:id].to_i)
+  @inventory = Inventory.get(params[:item_id].to_i)
   if @inventory
     @inventory.item_brand = params[:item_brand]
     @inventory.item_type = params[:item_type]
@@ -185,7 +189,7 @@ put "/inventory/:item_id" do
     raise Sinatra::NotFound
   end
 end
-#edit contact
+#edit inventory
 get "/inventory/:item_id/edit" do
   @inventory = Inventory.get(params[:item_id].to_i)
   if @inventory
@@ -195,10 +199,10 @@ get "/inventory/:item_id/edit" do
   end
 end
 
-post "/inventory/:item_id/edit" do
+put "/inventory/:item_id/edit" do
   puts "i've posted these from the form: #{params.inspect}"
   @inventory = Inventory.get(params[:item_id].to_i)
-  inventory = Inventory.update(
+  inventory = @inventory.update(
     :item_brand => params[:item_brand],
     :item_type => params[:item_type],
     :item_color => params[:item_color],
@@ -208,6 +212,9 @@ post "/inventory/:item_id/edit" do
     :item_sales_tax => params[:item_sales_tax],
     :item_note => params[:item_note]
     )
+  @inventory.save
+
+  redirect to("/inventory")
 end
 
 #delete inventory
@@ -218,6 +225,39 @@ delete '/inventory/:item_id' do
     redirect to '/inventory'
   else
     raise Sinatra:NotFound
+  end
+end
+
+#search
+post "/contacts/search" do
+  search = params[:search]
+
+  case params[:kind]
+  when "inventory"
+   @inventory = Inventory.all(:item_brand.like => search) |
+                Inventory.all(:item_type.like => search) |
+                Inventory.all(:item_color.like => search) |
+                Inventory.all(:item_quantity.like => search) |
+                Inventory.all(:item_cost.like => search) 
+    if @inventory
+      erb :inventory
+    else
+      raise Sinatra::NotFound
+    end
+  when "contacts"
+    @contacts = Contact.all(:first_name.like => search) |
+                Contact.all(:last_name.like => search) |
+                Contact.all(:phone_number.like => search) |
+                Contact.all(:street_address.like => search) |
+                Contact.all(:postal_code.like => search) |
+                Contact.all(:city.like => search) |
+                Contact.all(:state.like => search) |
+                Contact.all(:country.like => search) 
+    if @contacts
+      erb :contacts
+    else
+      raise Sinatra::NotFound
+    end
   end
 end
 

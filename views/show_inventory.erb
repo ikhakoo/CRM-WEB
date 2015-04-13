@@ -6,7 +6,7 @@
    Sales Price: <%= inventory.item_sales_price %><br>
    Notes: <%= inventory.item_note %> </p>
 
-<form action="/inventory/<%= @inventory.inventory_id %>" method="post">
+<form action="/inventory/<%= @inventory.item_id %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" name="Delete">
 </form>

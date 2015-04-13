@@ -3,7 +3,7 @@
   <fieldset>
     <legend>Modify Inventory</legend>
     <div class="well" id="contact-well">
-      <form class="form-horizontal" role="form" action="/inventory/<%= @inventory.item_id %>" method="POST">
+      <form class="form-horizontal" role="form" action="/inventory/<%= @inventory.item_id %>/edit" method="POST">
       <input type="hidden" name="_method" value="put">
         <div class="form-group">
         <label for="item_brand" class="col-sm-2 control-label">Brand:</label>

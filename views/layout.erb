@@ -41,11 +41,15 @@
 		        </li>
 
 				  	<li><a href="/help">Help</a></li>
-				  	<form class="navbar-form navbar-left" role="search">
+				  	<form class="navbar-form navbar-left" role="search" action="/contacts/search" method="POST">
         			<div class="form-group">
-          			<input type="text" class="form-control" placeholder="Contacts, Inventory">
+          			<input type="text" class="form-control" placeholder="Contacts, Inventory" name="search">
+          			<select name="kind" class="form-control">
+								  <option value="inventory">Inventory</option>
+								  <option value="contacts">Contacts</option>
+								</select>
         			</div>
-        			<button type="submit" class="btn btn-default">Submit</button>
+        			<button type="submit" class="btn btn-default">Search</button>
       			</form>      
 				  	</ul>
 		      
