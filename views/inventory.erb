@@ -8,14 +8,15 @@
          Quantity: <%= inventory.item_quantity %><br>
          Unit Cost: <%= inventory.item_cost %><br>
          Sales Price: <%= inventory.item_sales_price %><br>
-         Notes: <%= inventory.item_note %> </p>
-        <a class="btn btn-default" href="/inventory/<%= inventory.item_id %>/edit">Edit</a> 
-        <form action="/inventory/ <%= inventory.item_id %>" method="post" id="delete-inventory-form">
-        <input name="_method" type="hidden" value="delete" />
-        <input class="btn btn-default" type="submit" value="Delete"/><p>
-      </form>
-      </ul>
-      </li><hr>
+         Notes:
+        <p>
+          <form action="/inventory/ <%= inventory.item_id %>" method="post" id="delete-inventory-form">
+            <input name="_method" type="hidden" value="delete"/>
+            <a class="btn btn-default" href="/inventory/<%= inventory.item_id %>/edit">Edit</a> 
+            <input class="btn btn-default" type="submit" value="Delete"/>
+          </form>
+        <p>
+      </li>
     <% end %>
   </ul>
 </div>
