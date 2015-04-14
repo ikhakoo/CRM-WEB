@@ -32,7 +32,7 @@ class Inventory
   property :item_sales_price, Float
   property :item_sales_tax, Float
   property :item_note, String
- end  
+ end
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
@@ -260,4 +260,10 @@ post "/contacts/search" do
     end
   end
 end
+
+#help
+get '/help' do
+  erb :help
+end
+
 
