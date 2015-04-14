@@ -2,25 +2,66 @@
 <div class="well" id="contact-well">
   <ul>
   	<% @contacts.each do |contact| %>
-  		<li>
-	    	<p>First Name: <%= contact.first_name %><br> 
-	    		 Last Name: <%= contact.last_name %><br>
-	  		   Telephone: <%= contact.phone_number %><br>
-	  		   Email: <%= contact.email %><br>
-	  		   Street Address: <%= contact.street_address %><br>
-	  		   City: <%= contact.email %> Province\State: <%= contact.state %><br>
-	  		   Zip\Postal Code: <%= contact.postal_code %><br>
-	  		   Country: <%= contact.country %><br>
-	  			 Notes: <%= contact.note %> 
-	  		</p>
+  		<ul>
+	  		<table class="table table-striped table-hover ">
+            <tbody>
+              <thead>
+                <tr>
+                  <th>Fields:</th>
+                  <th>Description:</th>
+                </tr>
+              </thead>
+              <tr class="active">
+                <td><strong>First Name</strong></td>
+                <td><%= contact.first_name %></td>
+              </tr>
+              <tr class="active">
+                <td><strong>Last Name</strong></td>
+                <td><%= contact.last_name %></td>
+              </tr>
+              <tr class="active">
+                <td><strong>Telephone</strong></td>
+                <td><%= contact.phone_number %></td>
+              </tr>
+              <tr class="active">
+                <td><strong>Email</strong></td>
+                <td><%= contact.email %></td>
+              </tr>
+              <tr class="active">
+                <td><strong>Street Address</strong></td>
+                <td><%= contact.street_address %></td>
+              </tr>
+              <tr class="active">
+                <td><strong>City</strong></td>
+                <td><%= contact.city %></td>
+              </tr>
+              <tr class="active">
+                <td><strong>Province/State</strong></td>
+                <td><%= contact.state %></td>
+              </tr>
+              <tr class="active">
+                <td><strong>Zip/Postal Code</strong></td>
+                <td><%= contact.postal_code %></td>
+              </tr>
+              <tr class="active">
+                <td><strong>Country</strong></td>
+                <td><%= contact.country %></td>
+              </tr>
+              <tr class="active">
+                <td><strong>Notes</strong></td>
+                <td><%= contact.note %></td>
+              </tr>
+
+            </tbody>
+          </table>
 	  		<p>
     			<form action="/contacts/ <%= contact.id %>" method="post" id="delete-contact-form">
     				<input name="_method" type="hidden" value="delete"/>
 	    			<a class="btn btn-default" href="/contacts/<%= contact.id %>/edit">Edit</a> 
     				<input class="btn btn-default" type="submit" value="Delete"/>
   				</form>
-	    	<p>
-    	</li>
+	    	</p>
+	    	</ul>
   	<% end %>
   </ul>
 </div>

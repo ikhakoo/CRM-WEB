@@ -2,21 +2,54 @@
 <div class="well" id="contact-well">
   <ul>
     <% @inventory.each do |inventory| %>
-      <p>Brand: <%= inventory.item_brand %><br> 
-         Type: <%= inventory.item_type %><br>
-         Color: <%= inventory.item_color %><br>
-         Quantity: <%= inventory.item_quantity %><br>
-         Unit Cost: <%= inventory.item_cost %><br>
-         Sales Price: <%= inventory.item_sales_price %><br>
-         Notes:
-        <p>
+    <ul>
+          <table class="table table-striped table-hover ">
+            <tbody>
+              <thead>
+                <tr>
+                  <th>Fields:</th>
+                  <th>Description:</th>
+                </tr>
+              </thead>
+              <tr class="active">
+                <td>Brand</td>
+                <td><%= inventory.item_brand %></td>
+              </tr>
+              <tr class="active">
+                <td>Type</td>
+                <td><%= inventory.item_type %></td>
+              </tr>
+              <tr class="active">
+                <td>Color</td>
+                <td><%= inventory.item_color %></td>
+              </tr>
+              <tr class="active">
+                <td>Quantity</td>
+                <td><%= inventory.item_quantity %></td>
+              </tr>
+              <tr class="active">
+                <td>Unit Cost ($)</td>
+                <td><%= inventory.item_cost %></td>
+              </tr>
+              <tr class="active">
+                <td>Sales Price ($)</td>
+                <td><%= inventory.item_sales_price %></td>
+              </tr>
+              <tr class="active">
+                <td>Notes</td>
+                <td><%= inventory.item_note %></td>
+              </tr>
+
+            </tbody>
+          </table> 
           <form action="/inventory/ <%= inventory.item_id %>" method="post" id="delete-inventory-form">
             <input name="_method" type="hidden" value="delete"/>
             <a class="btn btn-default" href="/inventory/<%= inventory.item_id %>/edit">Edit</a> 
             <input class="btn btn-default" type="submit" value="Delete"/>
           </form>
         <p>
-      </li>
+      </ul>
     <% end %>
   </ul>
 </div>
+

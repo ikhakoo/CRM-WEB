@@ -67,15 +67,6 @@ post "/contacts/new" do
   )
   redirect to('/contacts')
 end
-#show contact
-get "/contacts/:id" do
-  @contact = Contact.get(params[:id].to_i)
-  if @contact
-    erb :show_contact
-  else
-    raise Sinatra::NotFound
-  end
-end
 
 put "/contacts/:id" do
   @contact = Contact.get(params[:id].to_i)
@@ -162,15 +153,6 @@ post "/inventory/new" do
     :item_note => params[:item_note]
   )
   redirect to('/inventory')
-end
-
-get "/inventory/:item_id" do
-  @inventory = Inventory.get(params[:item_id].to_i)
-  if @inventory
-    erb :show_inventory
-  else
-    raise Sinatra::NotFound
-  end
 end
 
 put "/inventory/:item_id" do
